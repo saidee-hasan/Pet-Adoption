@@ -15,7 +15,6 @@ const displayCard = (pets) => {
   const cardContainer = document.getElementById("card");
 
   pets.forEach((pets) => {
-    console.log(pets);
     const card = document.createElement("div");
     card.classList = "card card-compact bg-base-100 shadow-xl gap-5 ";
 
@@ -40,10 +39,10 @@ const displayCard = (pets) => {
     </div>
     
     <hr/>
-    <div onclick="loadDetailsId('${pets.petId}')" class="flex justify-between">
-    <button class="btn">Like</button>
+    <div  class="flex justify-between">
+    <button onclick="loadDetailsId('${pets.petId}')" class="btn">Like</button>
     <button class="btn">Adopt</button>
-    <button class="btn">Details</button>
+    <button  onclick="loadDetails('${pets.petId}')"  class="btn">Details</button>
 
     
     </div>
@@ -56,31 +55,56 @@ const displayCard = (pets) => {
     cardContainer.append(card);
   });
 };
-// Loda Dat id
+// Image Section
 
-const loadDetailsId = async(petsId)=>{
-    try {
-        const res = await fetch(
-          ` https://openapi.programming-hero.com/api/peddy/pet/${petsId}`
-        );
-        const data = await res.json();
-       
-       displayImage(data.petData )
-      } catch (error) {
-        console.error("Error:", error);
-      }
+const loadDetailsId = async (petsId) => {
+  try {
+    const res = await fetch(
+      ` https://openapi.programming-hero.com/api/peddy/pet/${petsId}`
+    );
+    const data = await res.json();
+ 
 
-}
+    displayImage(data.petData);
+    displayDetails(data.petData)
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
 // Display Name
-const displayImage=(petData)=>{
-    console.log(petData)
-    const detailContainer = document.getElementById("modal-content");
-    document.getElementById("customModal").showModal();
-    detailContainer.innerHTML=`
-    <img src='${video.thumbnail}' alt='' />
-    <p>${video.description
-}</p>
+const detailContainer = document.getElementById("like-image");
+
+const displayImage = (petData) => {
+  const image = document.createElement("div");
+  image.classList = "shadow-xl shadow-slate-500 p-2";
+
+  image.innerHTML = `
+  <img  src='${petData.image}' alt='' />
+ `;
+  console.log(image);
+  detailContainer.append(image);
+};
+// Image Section End
+
+
+
+const loadDetails = async (petsId) => {
+    try {
+      const res = await fetch(
+        ` https://openapi.programming-hero.com/api/peddy/pet/${petsId}`
+      );
+      const data = await res.json();
    
-    `
+  
+  
+      displayDetails(data.petData)
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+const displayDetails = (petData)=>{
+    console.log(petData)
+
+
 
 }
