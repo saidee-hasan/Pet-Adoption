@@ -13,7 +13,7 @@ const loadAllPets = async () => {
 loadAllPets();
 const displayCard = (pets) => {
   const cardContainer = document.getElementById("card");
-  console.log(cardContainer);
+
   pets.forEach((pets) => {
     console.log(pets);
     const card = document.createElement("div");
@@ -40,7 +40,7 @@ const displayCard = (pets) => {
     </div>
     
     <hr/>
-    <div class="flex justify-between">
+    <div onclick="loadDetailsId('${pets.petId}')" class="flex justify-between">
     <button class="btn">Like</button>
     <button class="btn">Adopt</button>
     <button class="btn">Details</button>
@@ -56,3 +56,31 @@ const displayCard = (pets) => {
     cardContainer.append(card);
   });
 };
+// Loda Dat id
+
+const loadDetailsId = async(petsId)=>{
+    try {
+        const res = await fetch(
+          ` https://openapi.programming-hero.com/api/peddy/pet/${petsId}`
+        );
+        const data = await res.json();
+       
+       displayImage(data.petData )
+      } catch (error) {
+        console.error("Error:", error);
+      }
+
+}
+// Display Name
+const displayImage=(petData)=>{
+    console.log(petData)
+    const detailContainer = document.getElementById("modal-content");
+    document.getElementById("customModal").showModal();
+    detailContainer.innerHTML=`
+    <img src='${video.thumbnail}' alt='' />
+    <p>${video.description
+}</p>
+   
+    `
+
+}
