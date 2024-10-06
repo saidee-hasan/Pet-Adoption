@@ -27,7 +27,7 @@ const displayCard = (pets) => {
       alt="Shoes" />
   </figure>
   <div class="card-body">
-    <h2 class="card-title font-bold">${pets.breed}</h2>
+    <h2 class="card-title font-bold">${pets.pet_name}</h2>
     <div class="flex">
     <p>Breed : ${pets.breed}</p>
     </div>
@@ -63,10 +63,8 @@ const loadDetailsId = async (petsId) => {
       ` https://openapi.programming-hero.com/api/peddy/pet/${petsId}`
     );
     const data = await res.json();
- 
 
     displayImage(data.petData);
-
   } catch (error) {
     console.error("Error:", error);
   }
@@ -79,39 +77,101 @@ const displayImage = (petData) => {
   image.classList = "shadow-xl shadow-slate-500 p-2";
 
   image.innerHTML = `
-  <img  src='${petData.image}' alt='' />
+  <img class="w-full" src='${petData.image}' alt='' />
  `;
   console.log(image);
   detailContainer.append(image);
 };
 // Image Section End
 
-
+// loadDetails
 
 const loadDetails = async (petsId) => {
+  try {
+    const res = await fetch(
+      ` https://openapi.programming-hero.com/api/peddy/pet/${petsId}`
+    );
+    const data = await res.json();
+    console.log(data)
+
+    displayDetails(data.petData);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+const displayDetails = (petData) => {
+  console.log(petData);
+
+  const detailContainer = document.getElementById("modal-content");
+  document.getElementById("customModal").showModal();
+  detailContainer.innerHTML = `
+    <div>
+    <img class='w-full' src='${petData.image}' alt='' />
+    <h2 class="card-title font-bold">${petData.pet_name}</h2>
+<div class="grid grid-cols-2">
+ 
+ <section>
+    <div class="flex">
+    <p>Breed : ${petData.breed}</p>
+    </div>
+      <div class="flex">
+    <p>Gender: ${petData.gender}</p>
+    </div>
+</section>
+      <div class="flex">
+    <p>Price: $ ${petData.price}</p>
+    </div>
+
+</div>
+<br/>
+<hr/>
+<br/>
+<p>${petData.pet_details}</p>
+
+
+
+</div>
+ 
+   
+    `;
+};
+// loadDetails End
+// Fetch All Pet Categories
+
+const fetchCategories = async () => {
     try {
       const res = await fetch(
-        ` https://openapi.programming-hero.com/api/peddy/pet/${petsId}`
+        `https://openapi.programming-hero.com/api/peddy/categories`
       );
       const data = await res.json();
-   
+      displayCategory(data.categories)
   
-  
-      displayDetails(data.petData)
+      
     } catch (error) {
       console.error("Error:", error);
     }
   };
-const displayDetails = (petData)=>{
-    console.log(petData)
+  fetchCategories()
 
-    const detailContainer = document.getElementById("modal-content");
-    document.getElementById("customModal").showModal();
-    detailContainer.innerHTML=`
-    <img src='${petData.image}' alt='' />
- 
-   
-    `
+  const displayCategory = (categories)=>{
 
+    const categoryContainer = document.getElementById("categoryBtn");
 
-}
+    categories.forEach((item) => {
+        console.log(item)
+      // create a btn
+      const buttonContainer = document.createElement("div");
+      buttonContainer.innerHTML = `
+      <button class="btn w-full">  <img class="w-8 h-8" src='${item.category_icon}' alt='' />  ${item.category}</button>
+      
+      
+      `;
+  
+     
+      categoryContainer.append(buttonContainer);
+    });
+    
+
+  }
+  displayCategory()
