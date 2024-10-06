@@ -66,7 +66,7 @@ const loadDetailsId = async (petsId) => {
  
 
     displayImage(data.petData);
-    displayDetails(data.petData)
+
   } catch (error) {
     console.error("Error:", error);
   }
@@ -105,6 +105,13 @@ const loadDetails = async (petsId) => {
 const displayDetails = (petData)=>{
     console.log(petData)
 
+    const detailContainer = document.getElementById("modal-content");
+    document.getElementById("customModal").showModal();
+    detailContainer.innerHTML=`
+    <img src='${petData.image}' alt='' />
+ 
+   
+    `
 
 
 }
