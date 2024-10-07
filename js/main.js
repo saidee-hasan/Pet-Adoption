@@ -5,44 +5,79 @@ const loadAllPets = async () => {
       "https://openapi.programming-hero.com/api/peddy/pets"
     );
     const data = await res.json();
+
     displayCard(data.pets);
   } catch (error) {
     console.error("Error:", error);
   }
 };
+const loadCategories = async (id) => {
+  try {
+    const res = await fetch(
+      `https://openapi.programming-hero.com/api/peddy/category/${id}`
+    );
+    const data = await res.json();
+    displayCard(data.data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+loadCategories();
+
 loadAllPets();
 const displayCard = (pets) => {
-  const cardContainer = document.getElementById("card");
+  console.log(pets);
 
-  pets.forEach((pets) => {
+  const cardContainer = document.getElementById("card");
+  cardContainer.innerHTML = "";
+  if(pets.length == 0){
+  cardContainer.classList.remove("grid")
+   cardContainer.innerHTML = `
+    <div class='min-h-screen  flex flex-col gap-5 justify-center items-center'>
+    <img src="../images/error.webp " alt=""/>
+    <h2 class="text-center text-xl font-bold ">
+    Not Content Here This Category
+    
+    </h2>
+    </div>
+    
+    `;
+    return;
+  }else{
+    cardContainer.classList.add("grid")
+  }
+
+  pets.forEach((item) => {
     const card = document.createElement("div");
-    card.classList = "card card-compact bg-base-100 shadow-xl gap-5 ";
+
+    card.classList = "card card-compact bg-base-100 shadow-xl gap-5 p-3 ";
 
     card.innerHTML = `
 
   <figure >
     <img
      class="h-full w-full object-cover"
-      src=${pets.image}
+      src=${item.image}
       alt="Shoes" />
   </figure>
   <div class="card-body">
     <h2 class="card-title font-bold">${pets.pet_name}</h2>
     <div class="flex">
-    <p>Breed : ${pets.breed}</p>
+    <p>Breed : ${item.breed}</p>
     </div>
       <div class="flex">
-    <p>Gender: ${pets.gender}</p>
+    <p>Gender: ${item.gender}</p>
     </div>
       <div class="flex">
-    <p>Price: $ ${pets.price}</p>
+    <p>Price: $ ${item.price}</p>
     </div>
     
     <hr/>
     <div  class="flex justify-between">
-    <button onclick="loadDetailsId('${pets.petId}')" class="btn">Like</button>
+    <button onclick="loadDetailsId('${item.petId}')" class="btn">Like</button>
     <button class="btn">Adopt</button>
-    <button  onclick="loadDetails('${pets.petId}')"  class="btn">Details</button>
+    <button  onclick="loadDetails('${item.petId}')"  class="btn">Details</button>
 
     
     </div>
@@ -92,7 +127,7 @@ const loadDetails = async (petsId) => {
       ` https://openapi.programming-hero.com/api/peddy/pet/${petsId}`
     );
     const data = await res.json();
-    console.log(data)
+    console.log(data);
 
     displayDetails(data.petData);
   } catch (error) {
@@ -137,41 +172,39 @@ const displayDetails = (petData) => {
     `;
 };
 // loadDetails End
+
 // Fetch All Pet Categories
 
 const fetchCategories = async () => {
-    try {
-      const res = await fetch(
-        `https://openapi.programming-hero.com/api/peddy/categories`
-      );
-      const data = await res.json();
-      displayCategory(data.categories)
-  
-      
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-  fetchCategories()
+  try {
+    const res = await fetch(
+      `https://openapi.programming-hero.com/api/peddy/categories`
+    );
+    const data = await res.json();
+    displayCategory(data.categories);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
 
-  const displayCategory = (categories)=>{
+fetchCategories();
 
-    const categoryContainer = document.getElementById("categoryBtn");
+const displayCategory = (categories) => {
+  const categoryContainer = document.getElementById("categoryBtn");
 
+  if (categories) {
     categories.forEach((item) => {
-        console.log(item)
+      console.log(item);
       // create a btn
       const buttonContainer = document.createElement("div");
       buttonContainer.innerHTML = `
-      <button class="btn w-full">  <img class="w-8 h-8" src='${item.category_icon}' alt='' />  ${item.category}</button>
+      <button onclick="loadCategories('${item.category}')" class="btn w-full">  <img class="w-8 h-8" src='${item.category_icon}' alt='' />  ${item.category}</button>
       
       
       `;
-  
-     
-      categoryContainer.append(buttonContainer);
-    });
-    
 
+      categoryContainer.append(buttonContainer);
+      // your code her
+    });
   }
-  displayCategory()
+};
