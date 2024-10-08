@@ -5,29 +5,37 @@ const loadAllPets = async () => {
       "https://openapi.programming-hero.com/api/peddy/pets"
     );
     const data = await res.json();
-
-    displayCard(data.pets);
+ 
+      displayCard(data.pets);
+  
+   
+   
   } catch (error) {
     console.error("Error:", error);
   }
 };
 const loadCategories = async (id) => {
+ 
   try {
     const res = await fetch(
       `https://openapi.programming-hero.com/api/peddy/category/${id}`
     );
     const data = await res.json();
-    displayCard(data.data);
+     displayCard(data.data)
+ 
   } catch (error) {
     console.error("Error:", error);
   }
 };
 
+
+
 loadCategories();
 
 loadAllPets();
 const displayCard = (pets) => {
-  console.log(pets);
+  
+
 
   const cardContainer = document.getElementById("card");
   cardContainer.innerHTML = "";
@@ -48,7 +56,13 @@ const displayCard = (pets) => {
     cardContainer.classList.add("grid")
   }
 
+
+ // runs every 1 second
+
+
+
   pets.forEach((item) => {
+
     const card = document.createElement("div");
 
     card.classList = "card card-compact bg-base-100 shadow-xl gap-5 p-3 ";
@@ -62,7 +76,7 @@ const displayCard = (pets) => {
       alt="Shoes" />
   </figure>
   <div class="card-body">
-    <h2 class="card-title font-bold">${pets.pet_name}</h2>
+    <h2 class="card-title font-bold">${item.pet_name}</h2>
     <div class="flex">
     <p>Breed : ${item.breed}</p>
     </div>
@@ -76,7 +90,7 @@ const displayCard = (pets) => {
     <hr/>
     <div  class="flex justify-between">
     <button onclick="loadDetailsId('${item.petId}')" class="btn">Like</button>
-    <button class="btn">Adopt</button>
+    <button onclick="Adopt()"  class="btn">Adopt</button>
     <button  onclick="loadDetails('${item.petId}')"  class="btn">Details</button>
 
     
@@ -182,6 +196,7 @@ const fetchCategories = async () => {
     );
     const data = await res.json();
     displayCategory(data.categories);
+   
   } catch (error) {
     console.error("Error:", error);
   }
@@ -194,7 +209,7 @@ const displayCategory = (categories) => {
 
   if (categories) {
     categories.forEach((item) => {
-      console.log(item);
+  
       // create a btn
       const buttonContainer = document.createElement("div");
       buttonContainer.innerHTML = `
@@ -208,3 +223,43 @@ const displayCategory = (categories) => {
     });
   }
 };
+
+
+
+
+
+
+//  Adopt Button Behavior
+
+const Adopt = ()=>{
+
+
+  let count = 3;
+const intervalId = setInterval(function() {
+  count--;
+  console.log(count)
+  document.getElementById("countdown").innerHTML = count;
+  const atopContainer = document.getElementById("modal-adopt");
+  document.getElementById("my_modal_2").showModal();
+
+  atopContainer.innerHTML = `
+    <div>
+   
+    <h2 class="card-title font-bold">${count}</h2>
+</div>
+ 
+   
+    `;
+
+
+
+
+
+  if (count === 0) {
+    clearInterval(intervalId);
+    console.log("Blast off!",count);
+    document.getElementById('button-adopt').click();
+  }
+}, 500); 
+
+}

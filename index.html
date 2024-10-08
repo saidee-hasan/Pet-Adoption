@@ -39,6 +39,7 @@
         </div>
       </nav>
     </header>
+
     <main class="w-11/12 mx-auto">
       <!-- main section -->
       <section class="text-center">
@@ -70,8 +71,10 @@
       </section>
       <!-- Category -->
       <section class="mt-10">
-        <div id="categoryBtn" class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-24 md:gap-10 gap-2"></div>
-
+        <div
+          id="categoryBtn"
+          class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-24 md:gap-10 gap-2"
+        ></div>
       </section>
 
       <!-- Category  End-->
@@ -79,37 +82,67 @@
       <!-- Card section -->
       <section>
         <h1 class="py-4">Beast Deil of You</h1>
-        <section class="grid md:grid-cols-6 gap-5 ">
+        <p id="countdown"></p>
+        <section class="grid md:grid-cols-6 gap-5">
           <div class="col-span-4">
+           
+           
+     
+  
             <div
               id="card"
               class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 "
             ></div>
+         
           </div>
 
           <!-- Like Image -->
           <div class="shadow-xl col-span-2">
-            <div class="grid md:grid-cols-2 grid-cols-1 gap-2" id="like-image"></div>
+            <div
+              class="grid md:grid-cols-2 grid-cols-1 gap-2"
+              id="like-image"
+            ></div>
           </div>
         </section>
 
+        <!-- Open the modal using ID.showModal() method -->
 
-            <!-- Open the modal using ID.showModal() method -->
+        <dialog id="customModal" class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box">
+            <div id="modal-content"></div>
+           
 
-<dialog id="customModal" class="modal  modal-bottom sm:modal-middle">
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button  class="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+        
+
+
+<!-- Adopt Modal -->
+
+<dialog id="my_modal_2" class="modal">
   <div class="modal-box">
-   <div id="modal-content"></div>
-
-    <div class="modal-action">
-      <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
-      </form>
-    </div>
+    <div id="modal-adopt"></div>
+    <p class="py-4">Press ESC key or click outside to close</p>
+  </div>
+  <div class="modal-action">
+    <form method="dialog">
+      <!-- if there is a button in form, it will close the modal -->
+      <button id="button-adopt" class="btn hidden"> </button>
+    </form>
   </div>
 </dialog>
+
+
+       
       </section>
     </main>
+
     <script src="./js/main.js"></script>
   </body>
 </html>
