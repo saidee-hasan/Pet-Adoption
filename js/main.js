@@ -243,9 +243,9 @@ const intervalId = setInterval(function() {
   document.getElementById("my_modal_2").showModal();
 
   atopContainer.innerHTML = `
-    <div>
+    <div >
    
-    <h2 class="card-title font-bold">${count}</h2>
+    <h2 class=" font-bold  text-5xl">${count}</h2>
 </div>
  
    
