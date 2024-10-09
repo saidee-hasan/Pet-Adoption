@@ -5,8 +5,8 @@ const loadAllPets = async () => {
       "https://openapi.programming-hero.com/api/peddy/pets"
     );
     const data = await res.json();
- 
-      displayCard(data.pets);
+     if(!displayCard(data.pets))return console.log("Saidee")
+      ;
   
    
    
@@ -21,7 +21,20 @@ const loadCategories = async (id) => {
       `https://openapi.programming-hero.com/api/peddy/category/${id}`
     );
     const data = await res.json();
-     displayCard(data.data)
+   
+     if(!displayCard(data.data)){
+      
+      document.getElementById("hide").classList.remove("hidden")
+      setTimeout(()=>{
+        document.getElementById("hide").classList.add("hidden")
+        document.getElementById("card").classList.remove("hidden")
+        
+      },3000)
+    document.getElementById("card").classList.add("hidden")
+    }
+
+  
+      
  
   } catch (error) {
     console.error("Error:", error);
@@ -234,11 +247,10 @@ const displayCategory = (categories) => {
 const Adopt = ()=>{
 
 
-  let count = 3;
+  let count = 4;
 const intervalId = setInterval(function() {
   count--;
-  console.log(count)
-  document.getElementById("countdown").innerHTML = count;
+
   const atopContainer = document.getElementById("modal-adopt");
   document.getElementById("my_modal_2").showModal();
 
