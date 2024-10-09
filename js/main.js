@@ -29,7 +29,7 @@ const loadCategories = async (id) => {
         document.getElementById("hide").classList.add("hidden")
         document.getElementById("card").classList.remove("hidden")
         
-      },3000)
+      },1000)
     document.getElementById("card").classList.add("hidden")
     }
 
@@ -102,9 +102,9 @@ const displayCard = (pets) => {
     
     <hr/>
     <div  class="flex justify-between">
-    <button onclick="loadDetailsId('${item.petId}')" class="btn">Like</button>
-    <button onclick="Adopt()"  class="btn">Adopt</button>
-    <button  onclick="loadDetails('${item.petId}')"  class="btn">Details</button>
+    <button onclick="loadDetailsId('${item.petId}')" >Like</button>
+    <button onclick="Adopt()"  >Adopt</button>
+    <button  onclick="loadDetails('${item.petId}')"  >Details</button>
 
     
     </div>
@@ -136,10 +136,10 @@ const detailContainer = document.getElementById("like-image");
 
 const displayImage = (petData) => {
   const image = document.createElement("div");
-  image.classList = "shadow-xl shadow-slate-500 p-2";
+  image.classList = "shadow-xl shadow-slate-500  ";
 
   image.innerHTML = `
-  <img class="w-full" src='${petData.image}' alt='' />
+  <img class="w-full p-2" src='${petData.image}' alt='' />
  `;
   console.log(image);
   detailContainer.append(image);
@@ -274,4 +274,30 @@ const intervalId = setInterval(function() {
   }
 }, 500); 
 
+}
+
+const SortPrice=async()=>{
+  try {
+    const res = await fetch(
+      "https://openapi.programming-hero.com/api/peddy/pets"
+    );
+    const data = await res.json();
+     console.log(data.pets)
+     data.pets.sort((a, b) => b.price - a.price);
+   
+   if(!displayCard(data.pets)){
+      
+    document.getElementById("hide").classList.remove("hidden")
+    setTimeout(()=>{
+      document.getElementById("hide").classList.add("hidden")
+      document.getElementById("card").classList.remove("hidden")
+      
+    },1000)
+  document.getElementById("card").classList.add("hidden")
+  }
+   
+   
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
