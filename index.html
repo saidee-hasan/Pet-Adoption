@@ -27,23 +27,26 @@
                 class="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor">
+                stroke="currentColor"
+              >
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M4 6h16M4 12h8m-8 6h16" />
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
               </svg>
             </div>
             <ul
               tabindex="0"
-              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
               <li><a>Home</a></li>
               <li><a>Shop</a></li>
               <li><a>Contact</a></li>
             </ul>
           </div>
-          <img src="./images/logo.webp" alt="">
+          <img src="./images/logo.webp" alt="" />
           <a class="btn btn-ghost text-xl">Paddy</a>
         </div>
         <div class="navbar-center hidden lg:flex">
@@ -55,10 +58,10 @@
         </div>
         <div class="navbar-end">
           <img
-          class="w-8 h-8"
-          src="https://img.icons8.com/?size=50&id=fUUEbUbXhzOA&format=gif"
-          alt=""
-        />
+            class="w-8 h-8"
+            src="https://img.icons8.com/?size=50&id=fUUEbUbXhzOA&format=gif"
+            alt=""
+          />
         </div>
       </div>
     </header>
@@ -101,42 +104,31 @@
       </section>
 
       <!-- Category  End-->
-     
+
       <!-- Card section -->
       <div class="flex flex-1 justify-between mt-10">
-        <h1 class="py-4 ">Beast Deil of You</h1>
-        <button onclick="SortPrice()" class="btn ">Sort by Price</button>
-
-
+        <h1 class="py-4">Beast Deil of You</h1>
+        <button onclick="SortPrice()" class="btn">Sort by Price</button>
       </div>
       <section>
-     
-     
-        <section class="grid md:grid-cols-6 grid-cols-1  gap-1 p-1">
+        <section class="grid md:grid-cols-6 grid-cols-1 gap-1 p-1">
           <div class="col-span-4">
-           
-           
             <div id="hide" class="hidden">
- <img src="./images/loding.gif" alt="">
-
+              <img src="./images/loding.gif" alt="" />
             </div>
-  
+
             <div
               id="card"
-              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 "
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
             ></div>
-         
           </div>
 
           <!-- Like Image -->
-          <div class="shadow-xl col-span-2 ">
+          <div class="shadow-xl col-span-2">
             <div
-              class="grid   lg:grid-cols-2   grid-cols-2  gap-2"
+              class="grid lg:grid-cols-2 grid-cols-2 gap-2"
               id="like-image"
-            >
-        
-           
-          </div>
+            ></div>
           </div>
         </section>
 
@@ -145,41 +137,74 @@
         <dialog id="customModal" class="modal modal-bottom sm:modal-middle">
           <div class="modal-box">
             <div id="modal-content"></div>
-           
 
-            <br>
-              <form method="dialog">
-                <!-- if there is a button in form, it will close the modal -->
-                <button  class="btn w-full">Close</button>
-              </form>
-            
+            <br />
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn w-full">Close</button>
+            </form>
           </div>
         </dialog>
-        
 
+        <!-- Adopt Modal -->
 
-<!-- Adopt Modal -->
-
-<dialog id="my_modal_2" class="modal">
-  <div class="modal-box text-center  ">
-    <img class="mx-auto" src="./images/like.png" alt="">
-    <h1 class="py-4 text-xl text-yellow-500 font-bold ">Congrates</h1>
-    <p>According to madol</p>
-    <div id="modal-adopt"></div>
-    
-  </div>
-  <div class="modal-action">
-    <form method="dialog">
-      <!-- if there is a button in form, it will close the modal -->
-      <button id="button-adopt" > </button>
-    </form>
-  </div>
-</dialog>
-
-
-       
+        <dialog id="my_modal_2" class="modal">
+          <div class="modal-box text-center">
+            <img class="mx-auto" src="./images/like.png" alt="" />
+            <h1 class="py-4 text-xl text-yellow-500 font-bold">Congrates</h1>
+            <p>According to madol</p>
+            <div id="modal-adopt"></div>
+          </div>
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button id="button-adopt"></button>
+            </form>
+          </div>
+        </dialog>
       </section>
     </main>
+<br>
+    <footer class="bg-base-200  ">
+      <footer class="footer text-base-content md:p-10 py-10  grid grid-cols-2 w-11/12 mx-auto">
+       
+        <nav>
+         <div class="flex gap-3">
+          
+          <img class="w-8 h-8" src="./images/logo.webp" alt="">
+          <h2 class="text-xl">Paddy</h2>
+
+         </div>
+          <a class="link link-hover">Contact</a>
+          <a class="link link-hover">Jobs</a>
+          <a class="link link-hover">Press kit</a>
+        </nav>
+        <nav>
+          <h6 class="footer-title">Legal</h6>
+          <a class="link link-hover">Terms of use</a>
+          <a class="link link-hover">Privacy policy</a>
+          <a class="link link-hover">Cookie policy</a>
+        </nav>
+        <form>
+          <h6 class="footer-title">Newsletter</h6>
+          <fieldset class="">
+            <label class="label">
+              <span class="label-text">Enter your email address</span>
+            </label>
+            <div class="join">
+              <input
+                type="text"
+                placeholder="username@site.com"
+                class="input input-bordered join-item" />
+              <button class="btn btn-primary join-item">Subscribe</button>
+            </div>
+          </fieldset>
+        </form>
+      </footer>
+
+
+
+    </footer>
 
     <script src="./js/main.js"></script>
   </body>
