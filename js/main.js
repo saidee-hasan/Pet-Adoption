@@ -15,7 +15,6 @@ const loadAllPets = async () => {
   }
 };
 const loadCategories = async (id) => {
- 
   try {
     const res = await fetch(
       `https://openapi.programming-hero.com/api/peddy/category/${id}`
@@ -78,7 +77,7 @@ const displayCard = (pets) => {
 
     const card = document.createElement("div");
 
-    card.classList = "card card-compact bg-base-100 shadow-xl gap-5 p-3 ";
+    card.classList = "card card-compact bg-base-100 shadow-xl gap-5 ";
 
     card.innerHTML = `
 
@@ -88,7 +87,7 @@ const displayCard = (pets) => {
       src=${item.image}
       alt="Shoes" />
   </figure>
-  <div class="card-body">
+  <div class="p-2">
     <h2 class="card-title font-bold">${item.pet_name}</h2>
     <div class="flex">
     <p>Breed : ${item.breed}</p>
@@ -99,12 +98,13 @@ const displayCard = (pets) => {
       <div class="flex">
     <p>Price: $ ${item.price}</p>
     </div>
-    
+    <br/>
     <hr/>
+    <br/>
     <div  class="flex justify-between">
-    <button onclick="loadDetailsId('${item.petId}')" >Like</button>
-    <button onclick="Adopt()"  >Adopt</button>
-    <button  onclick="loadDetails('${item.petId}')"  >Details</button>
+    <button class="btn xl:w-20 lg:p-1 md:p-1 rounded-sm" onclick="loadDetailsId('${item.petId}')" >   <img class="w-8 h-8 mx-auto" src="../images/like2.png" alt=""/>  </button>
+    <button class="btn xl:w-20 lg:p-1 md:p-1 btn-outline btn-success"  onclick="Adopt()"  >Adopt</button>
+    <button class="btn xl:w-20 lg:p-1 md:p-1 btn-outline btn-accent" onclick="loadDetails('${item.petId}')"  >Details</button>
 
     
     </div>
@@ -222,11 +222,11 @@ const displayCategory = (categories) => {
 
   if (categories) {
     categories.forEach((item) => {
-  
+    
       // create a btn
       const buttonContainer = document.createElement("div");
       buttonContainer.innerHTML = `
-      <button onclick="loadCategories('${item.category}')" class="btn w-full">  <img class="w-8 h-8" src='${item.category_icon}' alt='' />  ${item.category}</button>
+      <button  id="active-color" onclick="loadCategories('${item.category}')"  class=" btn focus:outline-none focus:rounded-3xl  focus:ring focus:ring-black w-full">  <img class="w-8 h-8" src='${item.category_icon}' alt='' />  ${item.category}</button>
       
       
       `;

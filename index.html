@@ -80,12 +80,16 @@
       <!-- Category  End-->
      
       <!-- Card section -->
-      <section>
-        <div class="flex flex-1 justify-between">
+      <div class="flex flex-1 justify-between mt-10">
         <h1 class="py-4 ">Beast Deil of You</h1>
         <button onclick="SortPrice()" class="btn ">Sort by Price</button>
+
+
       </div>
-        <section class="grid md:grid-cols-6 grid-cols-1  gap-1">
+      <section>
+     
+     
+        <section class="grid md:grid-cols-6 grid-cols-1  gap-1 p-1">
           <div class="col-span-4">
            
            
@@ -104,7 +108,7 @@
           <!-- Like Image -->
           <div class="shadow-xl col-span-2 ">
             <div
-              class="grid   lg:grid-cols-2   grid-cols-1  gap-2"
+              class="grid   lg:grid-cols-2   grid-cols-2  gap-2"
               id="like-image"
             >
         
@@ -120,12 +124,12 @@
             <div id="modal-content"></div>
            
 
-            <div class="modal-action">
+            <br>
               <form method="dialog">
                 <!-- if there is a button in form, it will close the modal -->
-                <button  class="btn">Close</button>
+                <button  class="btn w-full">Close</button>
               </form>
-            </div>
+            
           </div>
         </dialog>
         
@@ -134,9 +138,12 @@
 <!-- Adopt Modal -->
 
 <dialog id="my_modal_2" class="modal">
-  <div class="modal-box text-center ">
+  <div class="modal-box text-center  ">
+    <img class="mx-auto" src="./images/like.png" alt="">
+    <h1 class="py-4 text-xl text-yellow-500 font-bold ">Congrates</h1>
+    <p>According to madol</p>
     <div id="modal-adopt"></div>
-    <h1 class="py-4 text-xl text-yellow-500">Congrats ! .......❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥❤️‍🔥</h1>
+    
   </div>
   <div class="modal-action">
     <form method="dialog">
