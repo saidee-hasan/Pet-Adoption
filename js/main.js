@@ -77,7 +77,7 @@ const displayCard = (pets) => {
 
     const card = document.createElement("div");
 
-    card.classList = "card card-compact bg-base-100 shadow-xl gap-5 ";
+    card.classList = "card card-compact bg-base-100 shadow-xl gap-5 p-2";
 
     card.innerHTML = `
 
