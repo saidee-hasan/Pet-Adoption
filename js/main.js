@@ -57,9 +57,11 @@ const displayCard = (pets) => {
     <div class='min-h-screen  flex flex-col gap-5 justify-center items-center'>
     <img src="../images/error.webp " alt=""/>
     <h2 class="text-center text-xl font-bold ">
-    Not Content Here This Category
+    No Information Available
     
     </h2>
+    <p>It is a long established fact that a reader will be distracted by the readable content <br/>  of a page when looking at 
+ its layout. The point of using Lorem Ipsum is that it has a.</p>
     </div>
     
     `;
@@ -71,12 +73,10 @@ const displayCard = (pets) => {
 
  // runs every 1 second
 
-
-
   pets.forEach((item) => {
 
     const card = document.createElement("div");
-
+  
     card.classList = "card card-compact bg-base-100 shadow-xl gap-5 p-2";
 
     card.innerHTML = `
@@ -88,15 +88,22 @@ const displayCard = (pets) => {
       alt="Shoes" />
   </figure>
   <div class="p-2">
-    <h2 class="card-title font-bold">${item.pet_name}</h2>
+
+  <h2 class="card-title font-bold">${item.pet_name}</h2>
+
+  
+   
     <div class="flex">
-    <p>Breed : ${item.breed}</p>
+    ${item.breed !== undefined?`<p>  Breed : ${item.breed}</p>`:` <p>  Breed : fdyhrt</p> `}
+   
     </div>
       <div class="flex">
-    <p>Gender: ${item.gender}</p>
+      ${item.gender!== undefined?`<p>Gender: ${item.gender}</p>`:`<p>Gender:</p>`}
+    
     </div>
       <div class="flex">
-    <p>Price: $ ${item.price}</p>
+      ${item.price == null ?  `<p>$ Price: $ 000</p>`:    `<p>$ Price: $ ${item.price}</p>` }
+
     </div>
     <br/>
     <hr/>
