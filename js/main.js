@@ -106,7 +106,7 @@ const displayCard = (pets) => {
    
     </div>
       <div class="flex gap-1 ">
-<img class="w-4 h-4 mt-1" src="../images/femenine.png" alt=""/>
+<img class="w-4 h-4 mt-1" src="../images/card.png" alt=""/>
 <p> ${item.gender!== undefined?`<p>Gender: ${item.gender}</p>`:`<p>Gender: Not available</p>`}</p>
      
     
@@ -120,7 +120,7 @@ const displayCard = (pets) => {
  
 
       <div class="flex gap-1">
-      ${item.price == null ?  `<p>$  Price: Not available </p>`:    `<p>$ Price: ${item.price}$</p>` }
+      ${item.price == null ?  `<p>$  Price: Not available </p>`:    `<p>$  Price: ${item.price}$</p>` }
 
     </div>
     <br/>
@@ -200,16 +200,29 @@ const displayDetails = (petData) => {
  
  <section>
     <div class="flex">
-    <p>Breed : ${petData.breed}</p>
+       <img class="w-4 h-4 mt-1" src="../images/femenine.png" alt=""/>
+      <p>${petData.breed !== undefined?`<p>  Breed : ${petData.breed}</p>`:` <p>  Breed : Not available</p> `}</p>
+ 
     </div>
-      <div class="flex">
-    <p>Gender: ${petData.gender}</p>
+      <div class="flex gap-1 ">
+<img class="w-4 h-4 mt-1" src="../images/card.png" alt=""/>
+<p> ${petData.gender!== undefined?`<p>Gender: ${petData.gender}</p>`:`<p>Gender: Not available</p>`}</p>
+     
+    
     </div>
+     
 </section>
-      <div class="flex">
-    <p>Price: $ ${petData.price}</p>
+       <div class="flex gap-1">
+      ${petData.price == null ?  `<p>$  Price: Not available </p>`:    `<p>$  Price: ${petData.price}$</p>` }
+
     </div>
 
+       <div class="flex gap-1">
+      <img class="w-4 h-4 mt-1" src="../images/date-of-birth.png" alt=""/>
+      <p>      ${petData.date_of_birth!== undefined?`<p>Birth: ${petData.date_of_birth}</p>`:`<p>Birth: Not available</p>`}</p>
+
+    
+    </div>
 </div>
 <br/>
 <hr/>
