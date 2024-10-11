@@ -5,8 +5,8 @@ const loadAllPets = async () => {
       "https://openapi.programming-hero.com/api/peddy/pets"
     );
     const data = await res.json();
-     if(!displayCard(data.pets))return console.log("Saidee")
-      ;
+     displayCard(data.pets)
+      
   
    
    
@@ -14,13 +14,16 @@ const loadAllPets = async () => {
     console.error("Error:", error);
   }
 };
+
+// loadCategories
+
 const loadCategories = async (id) => {
   try {
     const res = await fetch(
       `https://openapi.programming-hero.com/api/peddy/category/${id}`
     );
     const data = await res.json();
-   
+
      if(!displayCard(data.data)){
       
       document.getElementById("hide").classList.remove("hidden")
@@ -28,7 +31,7 @@ const loadCategories = async (id) => {
         document.getElementById("hide").classList.add("hidden")
         document.getElementById("card").classList.remove("hidden")
         
-      },1000)
+      },2000)
     document.getElementById("card").classList.add("hidden")
     }
 
@@ -45,6 +48,8 @@ const loadCategories = async (id) => {
 loadCategories();
 
 loadAllPets();
+
+// displayCard
 const displayCard = (pets) => {
   
 
@@ -74,6 +79,7 @@ const displayCard = (pets) => {
  // runs every 1 second
 
   pets.forEach((item) => {
+   
 
     const card = document.createElement("div");
   
@@ -93,16 +99,28 @@ const displayCard = (pets) => {
 
   
    
-    <div class="flex">
-    ${item.breed !== undefined?`<p>  Breed : ${item.breed}</p>`:` <p>  Breed : fdyhrt</p> `}
+    <div class="flex gap-1 ">
+    <img class="w-4 h-4 mt-1" src="../images/femenine.png" alt=""/>
+    <p>${item.breed !== undefined?`<p>  Breed : ${item.breed}</p>`:` <p>  Breed : Not available</p> `}</p>
+    
    
     </div>
-      <div class="flex">
-      ${item.gender!== undefined?`<p>Gender: ${item.gender}</p>`:`<p>Gender:</p>`}
+      <div class="flex gap-1 ">
+<img class="w-4 h-4 mt-1" src="../images/femenine.png" alt=""/>
+<p> ${item.gender!== undefined?`<p>Gender: ${item.gender}</p>`:`<p>Gender: Not available</p>`}</p>
+     
     
     </div>
-      <div class="flex">
-      ${item.price == null ?  `<p>$ Price: $ 000</p>`:    `<p>$ Price: $ ${item.price}</p>` }
+      <div class="flex gap-1">
+      <img class="w-4 h-4 mt-1" src="../images/date-of-birth.png" alt=""/>
+      <p>      ${item.date_of_birth!== undefined?`<p>Birth: ${item.date_of_birth}</p>`:`<p>Birth: Not available</p>`}</p>
+
+    
+    </div>
+ 
+
+      <div class="flex gap-1">
+      ${item.price == null ?  `<p>$  Price: Not available </p>`:    `<p>$ Price: ${item.price}$</p>` }
 
     </div>
     <br/>
@@ -125,7 +143,7 @@ const displayCard = (pets) => {
   });
 };
 // Image Section
-
+//  loadDetailsId
 const loadDetailsId = async (petsId) => {
   try {
     const res = await fetch(
@@ -284,12 +302,13 @@ const intervalId = setInterval(function() {
 }
 
 const SortPrice=async()=>{
+
   try {
     const res = await fetch(
       "https://openapi.programming-hero.com/api/peddy/pets"
     );
     const data = await res.json();
-     console.log(data.pets)
+    
      data.pets.sort((a, b) => b.price - a.price);
    
    if(!displayCard(data.pets)){
@@ -299,7 +318,7 @@ const SortPrice=async()=>{
       document.getElementById("hide").classList.add("hidden")
       document.getElementById("card").classList.remove("hidden")
       
-    },1000)
+    },2000)
   document.getElementById("card").classList.add("hidden")
   }
    
